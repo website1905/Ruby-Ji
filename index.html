@@ -1,0 +1,1464 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Belated Princess Day, My Baby 👑</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: linear-gradient(180deg, #1b1138 0%, #381d5e 45%, #6b2d7a 80%, #a03c8a 100%);
+      --bg-pink: linear-gradient(180deg, #fce4ec 0%, #f8bbd0 55%, #f48fb1 100%);
+      --pink-btn: linear-gradient(90deg, #ff5e9c, #ff85b3);
+      --gold: #ffd54f;
+      --card-glass: rgba(255, 255, 255, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: #1b1138;
+      color: #fff;
+    }
+
+    .screen {
+      display: none;
+      min-height: 100vh;
+      width: 100%;
+      padding: 28px 18px 44px;
+      position: relative;
+      overflow: hidden;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation: fadeIn 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    #screen1 {
+      animation: fadeIn 2.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    #introPart {
+      animation: slowRise 2.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    #introPart.hiding {
+      opacity: 0;
+      transform: translateY(-12px);
+      pointer-events: none;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    .dark-theme {
+      background: var(--bg-dark);
+      color: #fff;
+    }
+
+    .pink-theme {
+      background: var(--bg-pink);
+      color: #4a154b;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slowRise {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 18px rgba(255, 94, 156, 0.45); }
+      50% { box-shadow: 0 0 32px rgba(255, 133, 179, 0.85); }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 0.95; transform: scale(1.2); }
+    }
+
+    @keyframes popUp {
+      from { opacity: 0; transform: translateY(40px) scale(0.94); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Stars Background */
+    .stars-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle 7.5s infinite ease-in-out;
+    }
+
+    .content-wrap {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .script-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.45rem;
+      line-height: 1.15;
+      margin: 10px 0 12px;
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.22);
+    }
+
+    .pink-theme .script-title {
+      color: #6a1b4d;
+      text-shadow: 0 2px 8px rgba(255, 255, 255, 0.6);
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      margin-bottom: 24px;
+      max-width: 360px;
+      line-height: 1.5;
+    }
+
+    .btn-royal {
+      background: var(--pink-btn);
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.96rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 18px;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+      animation: pulseGlow 5.5s ease-in-out infinite;
+    }
+
+    .btn-royal:active {
+      transform: scale(0.96);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
+      padding: 12px 26px;
+      border-radius: 999px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 20px;
+      backdrop-filter: blur(8px);
+      transition: transform 0.35s ease;
+    }
+
+    .btn-outline:active {
+      transform: scale(0.96);
+    }
+
+    /* Castle & Character SVGs */
+    .castle-svg {
+      width: 240px;
+      max-width: 80%;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.35));
+      animation: slowRise 2.4s cubic-bezier(0.22, 1, 0.36, 1) forwards, float 10s ease-in-out 2.4s infinite;
+    }
+
+    /* Screen 1B: Royal Envelope & Card */
+    .envelope-box {
+      width: 100%;
+      max-width: 350px;
+      margin-top: 12px;
+      position: relative;
+    }
+
+    .invitation-card {
+      background: #fffdf5;
+      color: #5d3a58;
+      border: 3px solid #f0c975;
+      border-radius: 18px;
+      padding: 26px 22px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3);
+      animation: popUp 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    #invitationPart .btn-royal {
+      animation: slowRise 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both, pulseGlow 5.5s ease-in-out 2.7s infinite;
+    }
+
+    .inv-label {
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      color: #c7932b;
+      font-weight: 600;
+      margin: 8px 0 12px;
+    }
+
+    .inv-text {
+      font-family: 'Caveat', cursive;
+      font-size: 1.38rem;
+      line-height: 1.45;
+      color: #4a2c45;
+    }
+
+    .heart-seal {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #ff5e9c;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 16px;
+      box-shadow: 0 4px 12px rgba(255, 94, 156, 0.45);
+    }
+
+    /* Screen 2: Kingdom Welcome */
+    .glass-card {
+      background: var(--card-glass);
+      border: 1.5px solid rgba(255, 255, 255, 0.24);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 22px 20px;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      margin: 14px 0 18px;
+      text-align: left;
+    }
+
+    .mini-badges {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .badge-card {
+      background: rgba(255, 255, 255, 0.92);
+      color: #5c2155;
+      border-radius: 14px;
+      padding: 12px 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    }
+
+    /* Screen 3: Letter Paper */
+    .letter-paper {
+      background: #fffef9;
+      border: 6px solid #ff70a6;
+      border-radius: 18px;
+      padding: 24px 20px;
+      width: 100%;
+      min-height: 300px;
+      text-align: left;
+      position: relative;
+      box-shadow: 0 14px 32px rgba(173, 20, 87, 0.22);
+      cursor: pointer;
+    }
+
+    .letter-paper::before, .letter-paper::after {
+      content: "📌";
+      position: absolute;
+      top: -12px;
+      font-size: 1.1rem;
+    }
+    .letter-paper::before { left: 10px; }
+    .letter-paper::after { right: 10px; }
+
+    .letter-text {
+      font-family: 'Caveat', cursive;
+      font-size: 1.35rem;
+      line-height: 1.55;
+      color: #3e273a;
+      white-space: pre-line;
+    }
+
+    .tap-hint {
+      font-size: 0.8rem;
+      color: #880e4f;
+      margin-top: 12px;
+      opacity: 0.8;
+    }
+
+    /* Screen 4: 6 Flip Cards */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      width: 100%;
+      margin: 14px 0 18px;
+    }
+
+    @media (min-width: 440px) {
+      .cards-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .flip-card {
+      perspective: 1000px;
+      height: 148px;
+      cursor: pointer;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+      transform-style: preserve-3d;
+    }
+
+    .flip-card.flipped .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front, .flip-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      padding: 12px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .flip-front {
+      background: linear-gradient(145deg, #ffd1e3, #ff9ec4);
+      color: #6a1b4d;
+    }
+
+    .flip-front .card-num {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      font-size: 0.68rem;
+      opacity: 0.75;
+    }
+
+    .flip-front .card-emoji {
+      font-size: 1.65rem;
+      margin-bottom: 6px;
+    }
+
+    .flip-front .card-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .flip-front .card-sub {
+      font-size: 0.68rem;
+      margin-top: 4px;
+      opacity: 0.8;
+    }
+
+    .flip-back {
+      background: #fffdf8;
+      color: #4a154b;
+      transform: rotateY(180deg);
+      border: 2px solid #ff85b3;
+    }
+
+    .flip-back .back-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #d81b60;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .flip-back p {
+      font-size: 0.78rem;
+      line-height: 1.38;
+    }
+
+    .progress-pill {
+      background: rgba(255, 255, 255, 0.16);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      margin-bottom: 4px;
+    }
+
+    /* Screen 5: Gift Box & Gifts */
+    .gift-stage {
+      position: relative;
+      margin: 18px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .gift-box-wrap {
+      width: 150px;
+      height: 140px;
+      position: relative;
+      cursor: pointer;
+      animation: float 8.5s ease-in-out infinite;
+    }
+
+    .gift-lid {
+      transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.8s ease;
+    }
+
+    .gift-opened .gift-lid {
+      transform: translateY(-48px) rotate(-12deg);
+      opacity: 0;
+    }
+
+    .gift-items {
+      width: 100%;
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .gift-items.show {
+      display: flex;
+    }
+
+    .gift-card {
+      background: rgba(255, 255, 255, 0.94);
+      color: #4a154b;
+      border-radius: 16px;
+      padding: 14px 16px;
+      text-align: left;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      box-shadow: 0 6px 18px rgba(173, 20, 87, 0.14);
+      animation: popUp 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .btn-bouquet {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: var(--pink-btn);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(255, 94, 156, 0.4);
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+    }
+
+    .btn-bouquet:active {
+      transform: scale(0.95);
+    }
+
+    .gift-card .g-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .gift-card h4 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.35rem;
+      color: #c2185b;
+      margin-bottom: 2px;
+    }
+
+    .gift-card p {
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: #55304f;
+    }
+
+    .note-card {
+      background: #fff8fb;
+      border: 2px dashed #f06292;
+      border-radius: 16px;
+      padding: 16px;
+      text-align: left;
+      animation: popUp 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .note-card h4 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.4rem;
+      color: #c2185b;
+      margin-bottom: 6px;
+    }
+
+    .note-card p {
+      font-size: 0.84rem;
+      line-height: 1.55;
+      color: #4a154b;
+    }
+
+    /* Screen 6: Promises */
+    .promise-list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 10px 0 8px;
+    }
+
+    .promise-item {
+      background: rgba(255, 255, 255, 0.13);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      text-align: left;
+    }
+
+    .promise-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #ffd54f;
+      color: #381d5e;
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Screen 7: Finale */
+    .sign-off {
+      width: 100%;
+      text-align: right;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.45rem;
+      color: #ffd1e3;
+      margin-top: 8px;
+    }
+
+    /* Sparkle Burst */
+    .sparkle-particle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 999;
+      font-size: 1.1rem;
+      animation: burst 2.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes burst {
+      0% { opacity: 1; transform: translate(0, 0) scale(0.6); }
+      100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(1.3); }
+    }
+
+    /* Floating Music Toggle Button */
+    .music-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 1000;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
+      background: rgba(56, 29, 94, 0.6);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      font-size: 1.2rem;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .music-toggle.visible {
+      display: flex;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    .music-toggle:active {
+      transform: scale(0.92);
+    }
+
+    /* Love Meter Volume Slider (Screen 8) */
+    .love-meter-card {
+      width: 100%;
+      background: var(--card-glass);
+      border: 1.5px solid rgba(255, 255, 255, 0.24);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 20px 18px 22px;
+      margin: 12px 0 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .love-question {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.7rem;
+      color: #ffd1e3;
+      margin-bottom: 6px;
+      line-height: 1.25;
+    }
+
+    .love-emoji-display {
+      font-size: 3.6rem;
+      line-height: 1.2;
+      margin: 6px 0 16px;
+      display: inline-block;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      user-select: none;
+    }
+
+    .love-emoji-display.pop {
+      transform: scale(1.22);
+    }
+
+    .volume-slider-wrap {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .vol-icon {
+      font-size: 1.15rem;
+      opacity: 0.85;
+      user-select: none;
+    }
+
+    .volume-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 14px;
+      border-radius: 999px;
+      outline: none;
+      cursor: pointer;
+      background: linear-gradient(
+        90deg,
+        #ff5e9c 0%,
+        #ffd54f var(--fill, 0%),
+        rgba(255, 255, 255, 0.22) var(--fill, 0%)
+      );
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.35);
+      touch-action: pan-y;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3.5px solid #ff5e9c;
+      box-shadow: 0 0 16px rgba(255, 94, 156, 0.85);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .volume-slider::-webkit-slider-thumb:active {
+      transform: scale(1.15);
+      box-shadow: 0 0 24px rgba(255, 213, 79, 0.95);
+    }
+
+    .volume-slider::-moz-range-thumb {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3.5px solid #ff5e9c;
+      box-shadow: 0 0 16px rgba(255, 94, 156, 0.85);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .slider-hint {
+      font-size: 0.76rem;
+      opacity: 0.78;
+      margin-top: 10px;
+    }
+
+    /* Fullscreen Kiss & Mwahhh Overlay */
+    .kiss-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      pointer-events: none;
+      overflow: hidden;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .kiss-overlay.active {
+      display: flex;
+    }
+
+    .kiss-emoji {
+      position: absolute;
+      font-size: clamp(3.4rem, 13vw, 6.2rem);
+      line-height: 1;
+      user-select: none;
+      opacity: 0;
+      transform: scale(0.2) rotate(var(--rot, 0deg));
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.38s ease;
+    }
+
+    .kiss-emoji.show {
+      opacity: 1;
+      transform: scale(1.15) rotate(var(--rot, 0deg));
+    }
+
+    .kiss-emoji.vanish {
+      opacity: 0;
+      transform: scale(0.2) translateY(-18px) rotate(var(--rot, 0deg));
+    }
+
+    .mwahhh-text {
+      position: relative;
+      z-index: 2010;
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(3.6rem, 15vw, 6.5rem);
+      font-weight: 700;
+      color: #fff;
+      text-shadow:
+        0 4px 24px rgba(255, 45, 130, 0.98),
+        0 0 42px rgba(255, 213, 79, 0.9),
+        0 0 12px rgba(56, 29, 94, 0.85);
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.45s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+      user-select: none;
+    }
+
+    .mwahhh-text.show {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .mwahhh-text.vanish {
+      opacity: 0;
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="stars-layer" id="starsLayer"></div>
+
+  <!-- Background Music: Upload "bg.mp3" (exact lowercase) in the same folder as index.html on GitHub -->
+  <audio id="bgMusic" loop preload="auto" playsinline>
+    <source src="./bg.mp3" type="audio/mpeg" />
+  </audio>
+  <button class="music-toggle" id="musicToggle" onclick="toggleMusic()" aria-label="Toggle Background Music" title="Toggle Music">🎵</button>
+
+  <!-- SCREEN 1: ROYAL INVITATION -->
+  <section class="screen dark-theme active" id="screen1">
+    <div class="content-wrap">
+      <!-- Castle + Princess SVG -->
+      <svg class="castle-svg" viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="220" cy="36" r="14" fill="#fff3b0" opacity="0.9"/>
+        <circle cx="226" cy="33" r="12" fill="#29164d"/>
+        <!-- Towers -->
+        <rect x="42" y="88" width="38" height="92" rx="3" fill="#9c7be8"/>
+        <polygon points="36,88 61,50 86,88" fill="#5e72eb"/>
+        <rect x="180" y="88" width="38" height="92" rx="3" fill="#9c7be8"/>
+        <polygon points="174,88 199,50 224,88" fill="#5e72eb"/>
+        <!-- Center Tower -->
+        <rect x="92" y="66" width="76" height="114" rx="4" fill="#b794f6"/>
+        <polygon points="84,66 130,22 176,66" fill="#4f6ef7"/>
+        <!-- Flags -->
+        <line x1="130" y1="22" x2="130" y2="8" stroke="#ffd54f" stroke-width="2"/>
+        <polygon points="130,8 145,13 130,18" fill="#ff5e9c"/>
+        <!-- Window with Princess -->
+        <path d="M114 114 A16 16 0 0 1 146 114 L146 132 L114 132 Z" fill="#ffe0f0"/>
+        <circle cx="130" cy="112" r="7" fill="#ffdbac"/>
+        <path d="M122 111 Q130 102 138 111" fill="#3d2314"/>
+        <polygon points="126,104 130,98 134,104" fill="#ffd54f"/>
+        <path d="M123 132 L126 119 L134 119 L137 132 Z" fill="#ff5e9c"/>
+        <!-- Gate -->
+        <path d="M112 180 L112 152 A18 18 0 0 1 148 152 L148 180 Z" fill="#6b3fa0"/>
+        <!-- Windows -->
+        <rect x="55" y="108" width="12" height="18" rx="6" fill="#ffd54f" opacity="0.85"/>
+        <rect x="193" y="108" width="12" height="18" rx="6" fill="#ffd54f" opacity="0.85"/>
+      </svg>
+
+      <div id="introPart">
+        <div style="font-size:2rem;margin-bottom:4px;">👑</div>
+        <h1 class="script-title">Attention, Your<br>Royal Highness...</h1>
+        <p class="subtitle">Someone has a little royal surprise waiting just for you, My Baby.</p>
+        <button class="btn-royal" onclick="openInvitation(event)">Open Your Royal Invitation 💌</button>
+      </div>
+
+      <div id="invitationPart" class="envelope-box" style="display:none;">
+        <div class="invitation-card">
+          <div style="font-size:1.7rem;">👑</div>
+          <div class="inv-label">BY ROYAL INVITATION</div>
+          <p class="inv-text">
+            By royal invitation, you are requested to enter a little world made especially for you. Your presence makes everything more magical.
+          </p>
+          <div class="heart-seal">💖</div>
+        </div>
+        <button class="btn-royal" onclick="goToScreen('screen2', event)">Step Into Your Kingdom ✨</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 2: WELCOME TO YOUR LITTLE KINGDOM -->
+  <section class="screen dark-theme" id="screen2">
+    <div class="content-wrap">
+      <svg class="castle-svg" style="width:190px;" viewBox="0 0 260 190" xmlns="http://www.w3.org/2000/svg">
+        <rect x="48" y="80" width="36" height="90" fill="#9c7be8"/>
+        <polygon points="42,80 66,46 90,80" fill="#5e72eb"/>
+        <rect x="176" y="80" width="36" height="90" fill="#9c7be8"/>
+        <polygon points="170,80 194,46 218,80" fill="#5e72eb"/>
+        <rect x="92" y="60" width="76" height="110" fill="#b794f6"/>
+        <polygon points="84,60 130,18 176,60" fill="#4f6ef7"/>
+        <!-- Princess in front -->
+        <circle cx="130" cy="122" r="14" fill="#ffdbac"/>
+        <path d="M115 122 Q130 103 145 122" fill="#3d2314"/>
+        <polygon points="122,108 130,98 138,108" fill="#ffd54f"/>
+        <path d="M110 172 L120 136 L140 136 L150 172 Z" fill="#ff5e9c"/>
+      </svg>
+
+      <h1 class="script-title">Welcome to Your Little Kingdom, My Baby 💖</h1>
+
+      <div class="glass-card">
+        If I could create a whole kingdom for someone, I'd make it for you. A place where your smile lights up every corner, your happiness matters more than anything, and every little moment feels like a fairytale.
+      </div>
+
+      <div class="mini-badges">
+        <div class="badge-card">Your Smile =<br>My Sunshine ☀️</div>
+        <div class="badge-card">Your Happiness<br>= My Wish ✨</div>
+        <div class="badge-card">Your Heart =<br>Pure Magic 💖</div>
+      </div>
+
+      <button class="btn-royal" onclick="goToScreen('screen3', event)">Read Your Royal Letter 💌</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 3: A LITTLE LETTER -->
+  <section class="screen pink-theme" id="screen3">
+    <div class="content-wrap">
+      <h1 class="script-title">A Little Letter from<br>Your Biggest Admirer 💌</h1>
+
+      <div class="letter-paper" onclick="revealFullLetter()">
+        <div class="letter-text" id="letterText"></div>
+      </div>
+      <div class="tap-hint" id="tapHint">Tap the letter to reveal it all ✨</div>
+
+      <button class="btn-royal" id="afterLetterBtn" style="display:none;" onclick="goToScreen('screen4', event)">There's More, My Princess... 💖</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 4: DO YOU KNOW WHY YOU'RE SO SPECIAL? -->
+  <section class="screen dark-theme" id="screen4">
+    <div class="content-wrap">
+      <h1 class="script-title">Do You Know Why<br>You're So Special? ✨</h1>
+      <p class="subtitle" style="margin-bottom:8px;">Tap each royal card to reveal its little secret</p>
+
+      <div class="cards-grid" id="cardsGrid"></div>
+
+      <div class="progress-pill" id="progressPill">0 of 6 royal secrets revealed ✨</div>
+      <button class="btn-royal" onclick="goToScreen('screen5', event)">Unlock My Royal Surprise 🎁</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 5: YOUR BELATED PRINCESS DAY GIFT -->
+  <section class="screen pink-theme" id="screen5">
+    <div class="content-wrap">
+      <h1 class="script-title">Your Belated Princess<br>Day Gift Is Here! 🎁</h1>
+      <p class="subtitle" id="giftSub">Ready to discover your little surprise?</p>
+
+      <div class="gift-stage" id="giftStage">
+        <div class="gift-box-wrap" id="giftBox" onclick="unwrapGift(event)">
+          <svg viewBox="0 0 160 150" xmlns="http://www.w3.org/2000/svg">
+            <!-- Lid -->
+            <g class="gift-lid">
+              <rect x="16" y="34" width="128" height="28" rx="6" fill="#ff70a6"/>
+              <rect x="70" y="34" width="20" height="28" fill="#ffd54f"/>
+              <ellipse cx="66" cy="28" rx="18" ry="10" transform="rotate(-18 66 28)" fill="#ffd54f"/>
+              <ellipse cx="94" cy="28" rx="18" ry="10" transform="rotate(18 94 28)" fill="#ffd54f"/>
+            </g>
+            <!-- Box Body -->
+            <rect x="24" y="62" width="112" height="78" rx="8" fill="#ff4d94"/>
+            <rect x="70" y="62" width="20" height="78" fill="#ffd54f"/>
+            <circle cx="80" cy="100" r="14" fill="#fff"/>
+            <text x="80" y="106" text-anchor="middle" font-size="16">💖</text>
+          </svg>
+        </div>
+        <button class="btn-royal" id="unwrapBtn" onclick="unwrapGift(event)">Unwrap Your Gift 💖</button>
+      </div>
+
+      <div class="gift-items" id="giftItems">
+        <div class="gift-card">
+          <div class="g-icon">🤗</div>
+          <div>
+            <h4>A Virtual Hug</h4>
+            <p>Imagine the warmest hug, just for you.</p>
+          </div>
+        </div>
+        <div class="gift-card">
+          <div class="g-icon">🌹</div>
+          <div>
+            <h4>A Bouquet of Roses</h4>
+            <p>One rose for every little reason you make life more beautiful. I picked a special digital bouquet just for you:</p>
+            <a href="https://digibouquet.vercel.app/bouquet/00bfbf89-cdf0-46c0-9f06-e04532268422" target="_blank" rel="noopener noreferrer" class="btn-bouquet">Open Your Bouquet 💐</a>
+          </div>
+        </div>
+        <div class="gift-card">
+          <div class="g-icon">🛡️</div>
+          <div>
+            <h4>A Royal Promise</h4>
+            <p>I'll always try to treat your feelings with care and respect.</p>
+          </div>
+        </div>
+        <div class="note-card">
+          <h4>A Little Note for You 💌</h4>
+          <p>Happy Belated Princess Day, My Baby! Even though our love story began after the 18th, I couldn't let it pass without celebrating you. I adore you so much, and you deserve every bit of this magic.</p>
+        </div>
+        <button class="btn-royal" onclick="goToScreen('screen6', event)">One Last Thing, Princess... 💖</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 6: MY PROMISE TO YOU -->
+  <section class="screen dark-theme" id="screen6">
+    <div class="content-wrap">
+      <!-- Couple in front of castle -->
+      <svg class="castle-svg" style="width:200px;" viewBox="0 0 260 175" xmlns="http://www.w3.org/2000/svg">
+        <rect x="52" y="60" width="156" height="100" rx="6" fill="#6b4bb8" opacity="0.55"/>
+        <polygon points="85,60 130,18 175,60" fill="#5e72eb" opacity="0.65"/>
+        <!-- Princess -->
+        <circle cx="108" cy="105" r="13" fill="#ffdbac"/>
+        <polygon points="101,92 108,83 115,92" fill="#ffd54f"/>
+        <path d="M90 158 L98 118 L118 118 L126 158 Z" fill="#ff5e9c"/>
+        <!-- Prince -->
+        <circle cx="152" cy="104" r="13" fill="#ffdbac"/>
+        <path d="M139 102 Q152 88 165 102" fill="#2c1d11"/>
+        <rect x="140" y="117" width="24" height="41" rx="6" fill="#4f6ef7"/>
+        <text x="130" y="88" text-anchor="middle" font-size="16">💖</text>
+      </svg>
+
+      <h1 class="script-title">My Promise to<br>You, Princess 👑</h1>
+
+      <div class="glass-card" style="text-align:center;">
+        <div style="font-size:1.5rem;margin-bottom:8px;">💖</div>
+        I can't promise that every day will be perfect, but I can promise to keep learning how to care for you better. I'll celebrate your happiness, respect your feelings, cheer for your dreams, and remind you that you never have to be perfect to be precious.
+        <br><br>
+        You don't need a crown to be a princess. You already deserve to be treated with kindness, respect, and genuine love.
+      </div>
+
+      <div class="promise-list">
+        <div class="promise-item"><span class="promise-num">1</span> I'll Cheer for Your Dreams</div>
+        <div class="promise-item"><span class="promise-num">2</span> I'll Respect Your Feelings</div>
+        <div class="promise-item"><span class="promise-num">3</span> I'll Always Make You Feel Cherished</div>
+      </div>
+
+      <button class="btn-royal" onclick="goToScreen('screen7', event)">Open Your Final Surprise ✨</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 7: FINALE -->
+  <section class="screen dark-theme" id="screen7">
+    <div class="content-wrap">
+      <h1 class="script-title">Happy Belated Princess Day,<br>My Princess! 👑</h1>
+
+      <div class="glass-card">
+        Princess Day may have passed before our relationship officially began, but I never want to miss a chance to celebrate how deeply I love and adore you. You don't need a fairytale to be extraordinary.
+        <br><br>
+        You have your own magic, your own dreams, your own beautiful story — and now I'm so lucky to be a part of it. I hope life gives you a million reasons to smile, and I promise to keep loving you with all my heart every single day.
+        <br><br>
+        So here's your little reminder, Princess...<br>
+        <strong>Keep shining. Keep dreaming. Keep being beautifully YOU.</strong>
+        <br><br>
+        Happy Belated Princess Day — 24 November! ✨
+      </div>
+
+      <div class="sign-off">With lots of love,<br>Yours Forever 💖</div>
+
+      <button class="btn-royal" onclick="goToScreen('screen8', event)">Send Me a Royal Hug 🤗</button>
+    </div>
+  </section>
+
+  <!-- SCREEN 8: ROYAL HUG DELIVERED -->
+  <section class="screen dark-theme" id="screen8">
+    <div class="content-wrap">
+      <svg class="castle-svg" style="width:210px;" viewBox="0 0 240 190" xmlns="http://www.w3.org/2000/svg">
+        <text x="70" y="42" font-size="18">💖</text>
+        <text x="155" y="48" font-size="16">✨</text>
+        <text x="120" y="28" font-size="20">👑</text>
+        <!-- Hugging Couple -->
+        <circle cx="105" cy="86" r="16" fill="#ffdbac"/>
+        <path d="M89 85 Q105 66 121 85" fill="#3d2314"/>
+        <polygon points="97,70 105,60 113,70" fill="#ffd54f"/>
+        <path d="M82 162 L92 104 L118 104 L128 162 Z" fill="#ff5e9c"/>
+
+        <circle cx="136" cy="84" r="16" fill="#ffdbac"/>
+        <path d="M120 82 Q136 64 152 82" fill="#2c1d11"/>
+        <rect x="122" y="102" width="28" height="60" rx="8" fill="#4f6ef7"/>
+      </svg>
+
+      <h1 class="script-title">Royal Hug Delivered!</h1>
+      <p class="subtitle">You deserve all the happiness in the kingdom, My Baby. 💖</p>
+
+      <!-- Love Meter Volume Slider -->
+      <div class="love-meter-card">
+        <div class="love-question">How much did you love your kingdom?</div>
+        <div class="love-emoji-display" id="loveEmoji">🥺</div>
+        <div class="volume-slider-wrap">
+          <span class="vol-icon">🔈</span>
+          <input
+            type="range"
+            min="0"
+            max="10"
+            value="0"
+            step="1"
+            class="volume-slider"
+            id="loveSlider"
+            oninput="updateLoveSlider(this.value)"
+            aria-label="How much did you love your kingdom"
+          />
+          <span class="vol-icon">🔊</span>
+        </div>
+        <div class="slider-hint">Slide all the way to the end 💖</div>
+      </div>
+
+      <button class="btn-outline" onclick="restartKingdom(event)">Back to the kingdom 💖</button>
+    </div>
+  </section>
+
+  <!-- Fullscreen Kiss Shower Overlay -->
+  <div class="kiss-overlay" id="kissOverlay"></div>
+
+  <script>
+    // Generate Twinkling Stars
+    const starsLayer = document.getElementById('starsLayer');
+    for (let i = 0; i < 45; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.animationDelay = (Math.random() * 6) + 's';
+      s.style.width = s.style.height = (2 + Math.random() * 3) + 'px';
+      starsLayer.appendChild(s);
+    }
+
+    // Sparkle Burst Effect
+    function sparkleBurst(e) {
+      const x = e && typeof e.clientX === 'number' ? e.clientX : window.innerWidth / 2;
+      const y = e && typeof e.clientY === 'number' ? e.clientY : window.innerHeight / 2;
+      const icons = ['✨', '💖', '🌸', '⭐', '👑'];
+      for (let i = 0; i < 14; i++) {
+        const p = document.createElement('div');
+        p.className = 'sparkle-particle';
+        p.textContent = icons[Math.floor(Math.random() * icons.length)];
+        p.style.left = x + 'px';
+        p.style.top = y + 'px';
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 45 + Math.random() * 85;
+        p.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+        p.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 2400);
+      }
+    }
+
+    // Screen Navigation
+    function goToScreen(id, e) {
+      sparkleBurst(e);
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (id === 'screen3') startTypewriter();
+    }
+
+    // Open Royal Invitation with Slow Fade & Start Background Music
+    function openInvitation(e) {
+      sparkleBurst(e);
+      startBgMusic();
+      const intro = document.getElementById('introPart');
+      intro.classList.add('hiding');
+      setTimeout(() => {
+        intro.style.display = 'none';
+        intro.classList.remove('hiding');
+        document.getElementById('invitationPart').style.display = 'block';
+      }, 900);
+    }
+
+    // =========================================================================
+    // BACKGROUND MUSIC CONTROLLER (bg.mp3 + Gentle Music-Box Fallback)
+    // Plays bg.mp3 directly on click (required for GitHub Pages / mobile Safari).
+    // If bg.mp3 is not found (e.g. in sandbox preview), plays a soft music box.
+    // =========================================================================
+    let usingFallback = false;
+    let fallbackPlaying = false;
+    let audioCtx = null;
+    let melodyTimer = null;
+    let noteIndex = 0;
+
+    // Gentle fairytale music-box notes (frequencies in Hz)
+    const musicBoxNotes = [
+      523.25, 659.25, 783.99, 1046.50, 987.77, 783.99, 659.25, 587.33,
+      440.00, 523.25, 659.25, 880.00, 783.99, 659.25, 587.33, 523.25
+    ];
+
+    function playFallbackNote() {
+      if (!fallbackPlaying || !audioCtx) return;
+      try {
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(musicBoxNotes[noteIndex % musicBoxNotes.length], now);
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.exponentialRampToValueAtTime(0.09, now + 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 1.4);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 1.45);
+        noteIndex++;
+      } catch (err) {
+        console.warn('Fallback audio error:', err);
+      }
+    }
+
+    function startFallbackMusic() {
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) return;
+        if (!audioCtx) audioCtx = new AudioContextClass();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        usingFallback = true;
+        fallbackPlaying = true;
+        clearInterval(melodyTimer);
+        playFallbackNote();
+        melodyTimer = setInterval(playFallbackNote, 950);
+        document.getElementById('musicToggle').textContent = '🎵';
+      } catch (err) {
+        console.warn('Could not start fallback music:', err);
+      }
+    }
+
+    function stopFallbackMusic() {
+      fallbackPlaying = false;
+      clearInterval(melodyTimer);
+    }
+
+    function startBgMusic() {
+      const audio = document.getElementById('bgMusic');
+      const toggleBtn = document.getElementById('musicToggle');
+      toggleBtn.classList.add('visible');
+
+      if (!audio) {
+        startFallbackMusic();
+        return;
+      }
+
+      // Attempt to play ./bg.mp3 synchronously inside the user click gesture
+      try {
+        audio.volume = 0.75;
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            usingFallback = false;
+            stopFallbackMusic();
+            toggleBtn.textContent = '🎵';
+          }).catch(() => {
+            // bg.mp3 missing or blocked -> use gentle music-box fallback
+            startFallbackMusic();
+          });
+        }
+      } catch (err) {
+        startFallbackMusic();
+      }
+    }
+
+    function toggleMusic() {
+      const audio = document.getElementById('bgMusic');
+      const toggleBtn = document.getElementById('musicToggle');
+
+      if (usingFallback) {
+        if (fallbackPlaying) {
+          stopFallbackMusic();
+          toggleBtn.textContent = '🔇';
+        } else {
+          startFallbackMusic();
+          toggleBtn.textContent = '🎵';
+        }
+        return;
+      }
+
+      if (!audio) return;
+      if (audio.paused) {
+        audio.play().then(() => {
+          toggleBtn.textContent = '🎵';
+        }).catch(() => {
+          startFallbackMusic();
+        });
+      } else {
+        audio.pause();
+        toggleBtn.textContent = '🔇';
+      }
+    }
+
+    // Screen 3: Typewriter Letter
+    const fullLetter = `Dear My Baby,
+
+Maybe I can't give you a real castle, a thousand diamonds, or a crown made of gold. But I hope I can give you something even more precious: genuine care, endless love, countless reasons to smile, someone who listens to you, and little moments that make you feel deeply cherished.
+
+You deserve kindness on your difficult days, happiness in your ordinary moments, and love that never makes you feel like you have to be someone else.
+
+Even though Princess Day passed before we started our relationship, I wanted to wish you a Happy Belated Princess Day today — because honestly, you deserve to feel like my princess every single day.`;
+
+    let typeTimer = null;
+    let letterDone = false;
+
+    function startTypewriter() {
+      const el = document.getElementById('letterText');
+      const btn = document.getElementById('afterLetterBtn');
+      const hint = document.getElementById('tapHint');
+      clearInterval(typeTimer);
+      el.textContent = '';
+      btn.style.display = 'none';
+      hint.style.display = 'block';
+      letterDone = false;
+      let idx = 0;
+      typeTimer = setInterval(() => {
+        el.textContent += fullLetter.charAt(idx);
+        idx++;
+        if (idx >= fullLetter.length) {
+          finishLetter();
+        }
+      }, 58);
+    }
+
+    function revealFullLetter() {
+      if (!letterDone) {
+        clearInterval(typeTimer);
+        document.getElementById('letterText').textContent = fullLetter;
+        finishLetter();
+      }
+    }
+
+    function finishLetter() {
+      letterDone = true;
+      clearInterval(typeTimer);
+      document.getElementById('tapHint').style.display = 'none';
+      document.getElementById('afterLetterBtn').style.display = 'inline-block';
+    }
+
+    // Screen 4: 6 Flip Cards
+    const secrets = [
+      { num: 1, emoji: '😊', title: 'Your Smile', label: 'YOUR SMILE', text: 'It can make an ordinary day feel beautiful.' },
+      { num: 2, emoji: '💗', title: 'Your Heart', label: 'YOUR HEART', text: 'Your kindness is one of your prettiest qualities.' },
+      { num: 3, emoji: '✨', title: 'Your Eyes', label: 'YOUR EYES', text: 'They make even the smallest moments memorable.' },
+      { num: 4, emoji: '🎀', title: 'Your Personality', label: 'YOUR PERSONALITY', text: 'You have your own kind of magic.' },
+      { num: 5, emoji: '🦋', title: 'Your Strength', label: 'YOUR STRENGTH', text: 'Even on tough days, you shine so brightly.' },
+      { num: 6, emoji: '🧸', title: 'Your Little Habits', label: 'YOUR LITTLE HABITS', text: "They're the cutest part of my every day." }
+    ];
+
+    const cardsGrid = document.getElementById('cardsGrid');
+    const revealedSet = new Set();
+
+    secrets.forEach((item) => {
+      const card = document.createElement('div');
+      card.className = 'flip-card';
+      card.innerHTML = `
+        <div class="flip-inner">
+          <div class="flip-front">
+            <span class="card-num">No. ${item.num}</span>
+            <div class="card-emoji">${item.emoji}</div>
+            <div class="card-title">${item.title}</div>
+            <div class="card-sub">Tap to reveal ✨</div>
+          </div>
+          <div class="flip-back">
+            <div class="back-label">${item.label}</div>
+            <p>${item.text}</p>
+          </div>
+        </div>
+      `;
+      card.addEventListener('click', (e) => {
+        card.classList.toggle('flipped');
+        revealedSet.add(item.num);
+        document.getElementById('progressPill').textContent = `${revealedSet.size} of 6 royal secrets revealed ✨`;
+        sparkleBurst(e);
+      });
+      cardsGrid.appendChild(card);
+    });
+
+    // Screen 5: Gift Unwrap
+    function unwrapGift(e) {
+      sparkleBurst(e);
+      document.getElementById('giftBox').classList.add('gift-opened');
+      document.getElementById('unwrapBtn').style.display = 'none';
+      document.getElementById('giftSub').textContent = 'Here is what I saved just for you 💖';
+      setTimeout(() => {
+        document.getElementById('giftStage').style.display = 'none';
+        document.getElementById('giftItems').classList.add('show');
+      }, 1500);
+    }
+
+    // Screen 8: Volume-Style Love Slider & Fullscreen Kiss Shower
+    const loveEmojis = ['🥺', '😓', '😔', '☹️', '🙁', '🙃', '😌', '😙', '😚', '😘', '💋'];
+    let kissShowerActive = false;
+
+    function updateLoveSlider(value) {
+      const idx = Number(value);
+      const emojiEl = document.getElementById('loveEmoji');
+      const sliderEl = document.getElementById('loveSlider');
+
+      if (emojiEl) {
+        emojiEl.textContent = loveEmojis[idx] || '🥺';
+        emojiEl.classList.remove('pop');
+        void emojiEl.offsetWidth;
+        emojiEl.classList.add('pop');
+        setTimeout(() => emojiEl.classList.remove('pop'), 220);
+      }
+
+      if (sliderEl) {
+        const pct = (idx / (loveEmojis.length - 1)) * 100;
+        sliderEl.style.setProperty('--fill', pct + '%');
+      }
+
+      if (idx === loveEmojis.length - 1 && !kissShowerActive) {
+        triggerKissShower();
+      }
+    }
+
+    function triggerKissShower() {
+      kissShowerActive = true;
+      const overlay = document.getElementById('kissOverlay');
+      if (!overlay) return;
+
+      overlay.innerHTML = '';
+      overlay.classList.add('active');
+
+      // Build a dense 100% fullscreen grid of big 😘 and 💋 emojis
+      const cols = window.innerWidth < 500 ? 6 : 9;
+      const rows = window.innerHeight < 700 ? 8 : 10;
+      const kissIcons = ['😘', '💋'];
+      const emojiNodes = [];
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const span = document.createElement('span');
+          span.className = 'kiss-emoji';
+          span.textContent = kissIcons[(r + c) % 2];
+          const jitterX = (Math.random() - 0.5) * (100 / cols) * 0.7;
+          const jitterY = (Math.random() - 0.5) * (100 / rows) * 0.7;
+          const leftPct = ((c + 0.5) / cols) * 100 + jitterX;
+          const topPct = ((r + 0.5) / rows) * 100 + jitterY;
+          span.style.left = `calc(${leftPct}% - 0.5em)`;
+          span.style.top = `calc(${topPct}% - 0.5em)`;
+          span.style.setProperty('--rot', Math.round((Math.random() - 0.5) * 34) + 'deg');
+          overlay.appendChild(span);
+          emojiNodes.push(span);
+        }
+      }
+
+      // Centered Mwahhh text
+      const mwahText = document.createElement('div');
+      mwahText.className = 'mwahhh-text';
+      mwahText.textContent = 'Mwahhh 💋';
+      overlay.appendChild(mwahText);
+
+      // Reveal all emojis & Mwahhh text immediately to fill the screen
+      requestAnimationFrame(() => {
+        emojiNodes.forEach((node) => node.classList.add('show'));
+        mwahText.classList.add('show');
+      });
+
+      // Shuffle emoji order so they disappear 1 by 1 across ~3 seconds
+      const shuffled = [...emojiNodes].sort(() => Math.random() - 0.5);
+      const totalDuration = 3000;
+      const startDelay = 450;
+      const step = totalDuration / shuffled.length;
+
+      shuffled.forEach((node, i) => {
+        setTimeout(() => {
+          node.classList.remove('show');
+          node.classList.add('vanish');
+        }, startDelay + i * step);
+      });
+
+      // Fade out Mwahhh text near the end and clean up
+      setTimeout(() => {
+        mwahText.classList.remove('show');
+        mwahText.classList.add('vanish');
+      }, startDelay + totalDuration - 350);
+
+      setTimeout(() => {
+        overlay.classList.remove('active');
+        overlay.innerHTML = '';
+        kissShowerActive = false;
+      }, startDelay + totalDuration + 450);
+    }
+
+    // Restart
+    function restartKingdom(e) {
+      const intro = document.getElementById('introPart');
+      intro.style.display = 'block';
+      intro.classList.remove('hiding');
+      document.getElementById('invitationPart').style.display = 'none';
+      document.getElementById('giftBox').classList.remove('gift-opened');
+      document.getElementById('unwrapBtn').style.display = 'inline-block';
+      document.getElementById('giftStage').style.display = 'flex';
+      document.getElementById('giftItems').classList.remove('show');
+      document.getElementById('giftSub').textContent = 'Ready to discover your little surprise?';
+      document.querySelectorAll('.flip-card').forEach(c => c.classList.remove('flipped'));
+      revealedSet.clear();
+      document.getElementById('progressPill').textContent = '0 of 6 royal secrets revealed ✨';
+      const loveSlider = document.getElementById('loveSlider');
+      if (loveSlider) {
+        loveSlider.value = 0;
+        updateLoveSlider(0);
+      }
+      goToScreen('screen1', e);
+    }
+  </script>
+</body>
+</html>
